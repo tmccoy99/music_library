@@ -23,8 +23,8 @@ describe AlbumRepository do
     expect(@repo.all).to eq [@am, @humbug]
   end
   
-  it "#find is given an album id as argument and returns the corresonding album" do
-    expect(@repo.find(2)).to eq @humbug
+  it "#find is given an id as argument and returns corresponding album" do
+    expect(@repo.find(1)).to eq @am
   end
 
   it "#create takes album as argument and adds it to database" do

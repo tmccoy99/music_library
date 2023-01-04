@@ -10,9 +10,10 @@ class AlbumRepository
   end
 
   def find(id)
-    sql = "SELECT * FROM albums WHERE id = #{id}"
-    query_result = DatabaseConnection.exec_params(sql, [])
-    record = query_result[0]
+    query = "SELECT * " \
+    "FROM albums WHERE id = $1"
+    params = [id]
+    record = DatabaseConnection.exec_params(query, params)[0]
     convert_to_album(record)
   end
 
