@@ -6,9 +6,7 @@ class AlbumRepository
     sql = "SELECT * FROM albums"
     query_result = DatabaseConnection.exec_params(sql, [])
     arr = query_result.map { |record| convert_to_album(record) }
-    end
-
-  arr
+    arr
   end
 
   def find(id)
@@ -18,8 +16,10 @@ class AlbumRepository
     convert_to_album(record)
   end
 
-  def create
-
+  def create(album)
+    sql = "INSERT INTO albums (title, release_year, artist_id)" \
+    " VALUES ('#{album.title}', '#{album.release_year}', '#{album.artist_id}')"
+    DatabaseConnection.exec_params(sql, [])
   end
 
   private
