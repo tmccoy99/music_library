@@ -1,6 +1,7 @@
 require "album_repository"
 require "database_connection"
 require "album"
+require "pg"
 
 describe AlbumRepository do
 
@@ -11,6 +12,11 @@ describe AlbumRepository do
     @am.release_year = 2013 ; @humbug.release_year = 2009
     @am.id = 1 ; @humbug.id = 2
     @am.artist_id = 1 ; @humbug.artist_id = 1
+
+    test_seed = File.read("spec/seeds_album.sql")
+    connection = PG.connect({ host: '127.0.0.1', 
+    dbname: 'music_library_test' })
+    connection.exec(test_seed)
   end
 
   it "#all returns array of album instances in test database" do
@@ -19,5 +25,15 @@ describe AlbumRepository do
   
   it "#find is given an album id as argument and returns the corresonding album" do
     expect(@repo.find(2)).to eq @humbug
+  end
+
+  it "#create takes album as argument and adds it to database" do
+    the_car = Album.new
+    the_car.title = "The Car"
+    the_car.release_year = 2022
+    the_car.id = 3
+    the_car.artist_id = 1
+    @repo.create(the_car)
+    expect(@repo.all).to eq [@am, @humbug, the_car]
   end
 end
