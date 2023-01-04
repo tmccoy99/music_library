@@ -5,4 +5,5 @@ require_relative "lib/album.rb"
 DatabaseConnection.connect("music_library")
 
 repo = AlbumRepository.new
-repo.all.each { |album| p album.title }
+album = repo.find(3)
+p "#{album.title} #{album.release_year}"
