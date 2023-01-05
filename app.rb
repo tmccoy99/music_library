@@ -25,9 +25,11 @@ class Application
     input = @io.gets.chomp
     case input
     when "1"
-      @io.puts "Here is the list of albums:\n" \
-      "# * 1 - AM\n" \
-      "# * 2 - Humbug"
+      @io.puts "Here is the list of albums:"
+      @album_repository.all.each do |album|
+        @io.puts "* #{album.id} - #{album.title}"
+      end
+
     else
       @io.puts "Sorry, invalid input!"
     end
