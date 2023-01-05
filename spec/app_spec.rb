@@ -34,19 +34,22 @@ describe Application do
     end
   end
 
-#   context "2 is input" do
-#     xit "lists artists in database" do
-#       io = double :io
-#       app = Application.new("music_library_test", io,
-#       AlbumRepository.new, ArtistRepository.new)
-#       expect(io).to receive(:puts).with "Welcome to the music library manager!"
-#       expect(io).to receive(:puts).with "\nWhat would you like to do?"
-#       expect(io).to receive(:puts).with "1 - List all albums\n2 - List all artists"
-#       expect(io).to receive(:gets).and_return("2")
-#       # expect(io).to receive(:puts).with 
-#     end
-#   end
-# end
+  context "2 is input" do
+    it "lists artists in database" do
+      io = double :io
+      app = Application.new("music_library_test", io,
+      AlbumRepository.new, ArtistRepository.new)
+      expect(io).to receive(:puts).with "Welcome to the music library manager!"
+      expect(io).to receive(:puts).with "\nWhat would you like to do?"
+      expect(io).to receive(:puts).with "1 - List all albums\n2 - List all artists"
+      expect(io).to receive(:gets).and_return("2")
+      expect(io).to receive(:puts).with "Here is the list of artists:"
+      expect(io).to receive(:puts).with "* 1 - Arctic Monkeys"
+      expect(io).to receive(:puts).with "* 2 - Katy Perry"
+      app.run
+    end
+  end
+end
 
 
 # $ ruby app.rb

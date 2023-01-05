@@ -1,3 +1,5 @@
+require_relative "artist.rb"
+
 class ArtistRepository
 
   def all
@@ -8,6 +10,7 @@ class ArtistRepository
       artist.name = record["name"]
       artist.genre = record["genre"]
       artist.id = record["id"]
+      artist
     end
   end
 

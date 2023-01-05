@@ -29,7 +29,11 @@ class Application
       @album_repository.all.each do |album|
         @io.puts "* #{album.id} - #{album.title}"
       end
-
+    when "2"
+      @io.puts "Here is the list of artists:"
+      @artist_repository.all.each do |artist|
+        @io.puts "* #{artist.id} - #{artist.name}"
+      end
     else
       @io.puts "Sorry, invalid input!"
     end
