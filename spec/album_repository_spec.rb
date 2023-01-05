@@ -37,7 +37,7 @@ describe AlbumRepository do
     expect(@repo.all).to eq [@am, @humbug, the_car]
 
     sql = File.read("spec/seeds_album.sql")
-    connection = PG.connect({ host: '127.0.0.1', dbname: database_name })
+    connection = PG.connect({ host: '127.0.0.1', dbname: "music_library_test" })
     connection.exec(sql)
   end
 end
