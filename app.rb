@@ -22,10 +22,18 @@ class Application
     @io.puts "Welcome to the music library manager!"
     @io.puts "\nWhat would you like to do?"
     @io.puts "1 - List all albums\n2 - List all artists"
-    @io.gets.chomp
-    @io.puts "Sorry, invalid input!"
+    input = @io.gets.chomp
+    case input
+    when "1"
+      @io.puts "Here is the list of albums:\n" \
+      "# * 1 - AM\n" \
+      "# * 2 - Humbug"
+    else
+      @io.puts "Sorry, invalid input!"
+    end
   end
 end
+
 
 # Don't worry too much about this if statement. It is basically saying "only
 # run the following code if this is the main file being run, instead of having
