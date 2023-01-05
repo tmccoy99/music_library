@@ -1,7 +1,3 @@
-require_relative "lib/database_connection.rb"
-require_relative "lib/album_repository.rb"
-require_relative "lib/album.rb"
-
 # file: app.rb
 
 require_relative './lib/album_repository'
@@ -23,13 +19,11 @@ class Application
   end
 
   def run
-    # "Runs" the terminal application
-    # so it can ask the user to enter some input
-    # and then decide to run the appropriate action
-    # or behaviour.
-
-    # Use `@io.puts` or `@io.gets` to
-    # write output and ask for user input.
+    @io.puts "Welcome to the music library manager!"
+    @io.puts "\nWhat would you like to do?"
+    @io.puts "1 - List all albums\n2 - List all artists"
+    @io.gets.chomp
+    @io.puts "Sorry, invalid input!"
   end
 end
 
