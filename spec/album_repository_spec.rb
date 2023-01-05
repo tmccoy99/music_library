@@ -35,5 +35,9 @@ describe AlbumRepository do
     the_car.artist_id = 1
     @repo.create(the_car)
     expect(@repo.all).to eq [@am, @humbug, the_car]
+
+    sql = File.read("spec/seeds_album.sql")
+    connection = PG.connect({ host: '127.0.0.1', dbname: database_name })
+    connection.exec(sql)
   end
 end
